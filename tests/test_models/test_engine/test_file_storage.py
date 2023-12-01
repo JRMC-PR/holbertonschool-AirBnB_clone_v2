@@ -30,6 +30,11 @@ class test_fileStorage(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self.console.onecmd("EOF")
 
+    def test_quit(self):
+        """ Test for quit """
+        with self.assertRaises(SystemExit):
+            self.console.onecmd("quit")
+
     def test_id(self):
         """Test id"""
         self.assertEqual(self.obj.id, id)
@@ -169,7 +174,7 @@ class test_fileStorage(unittest.TestCase):
         self.assertEqual(test_obj.latitude, 37.77)
         self.assertEqual(test_obj.longitude, 122.41)
 
-    def test_docstring(self):
+    def test_docstrings(self):
         """Test docstring"""
         self.assertIsNotNone(FileStorage.__doc__)
 
