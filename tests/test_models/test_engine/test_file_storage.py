@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
 import os
+from models import HBNBCommand
 
 
 class test_fileStorage(unittest.TestCase):
@@ -177,6 +178,21 @@ class test_fileStorage(unittest.TestCase):
     def test_docstrings(self):
         """Test docstring"""
         self.assertIsNotNone(FileStorage.__doc__)
+
+    def setUp(self):
+        """Set up for the tests"""
+        self.console = HBNBCommand()
+        self.file_storage = FileStorage()
+
+    def test_all(self):
+        """Test the all method"""
+        self.console.onecmd('all BaseModel')
+        self.assertIsInstance(self.file_storage.all(), dict)
+
+    def test_create(self):
+        """Test the create method"""
+        self.console.onecmd('create BaseModel')
+        self.assertIsInstance(self.file_storage.all(), dict)
 
 
 if __name__ == "__main__":
