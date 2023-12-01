@@ -25,6 +25,11 @@ class test_fileStorage(unittest.TestCase):
         except:
             pass
 
+    def test_EOF(self):
+        """ Test for EOF """
+        with self.assertRaises(SystemExit):
+            self.console.onecmd("EOF")
+
     def test_id(self):
         """Test id"""
         self.assertEqual(self.obj.id, id)
@@ -163,6 +168,10 @@ class test_fileStorage(unittest.TestCase):
         self.assertEqual(test_obj.price_by_night, 300)
         self.assertEqual(test_obj.latitude, 37.77)
         self.assertEqual(test_obj.longitude, 122.41)
+
+    def test_docstring(self):
+        """Test docstring"""
+        self.assertIsNotNone(FileStorage.__doc__)
 
 
 if __name__ == "__main__":
