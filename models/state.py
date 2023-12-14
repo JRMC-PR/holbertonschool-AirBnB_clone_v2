@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
+from sqlalchemy.orm import Session
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String
 from os import getenv
@@ -35,3 +36,7 @@ class State(BaseModel, Base):
             all_cities = storage.all(City)
             return [city for city in all_cities.values()
                     if city.state_id == self.id]
+
+        def close(self):
+            """Close session"""
+            Session.close()
