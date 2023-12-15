@@ -20,11 +20,21 @@ def states():
     return render_template('9-states.html', states=states)
 
 
+# @app.route('/states/<int:id>')
+# def states_id(id):
+#     states = storage.all(id)
+#     return render_template('9-states.html', id=id)
+
 @app.route('/states/<id>')
 def states_id(id):
-    states = storage.all(id)
-    return render_template('9-states.html', id=id)
+    states = storage.all(State).values()
+    state = next((state for state in states if state.id == id), None)
+    if state is not None:
+        cities = sorted(state.cities, key=lambda city: city.name)
+    else:
+        cities = []
+    return render_template('9-states.html', state=state, cities=cities)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
