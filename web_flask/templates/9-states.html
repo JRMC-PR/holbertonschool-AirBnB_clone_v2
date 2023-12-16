@@ -12,7 +12,7 @@
     <h1>States</h1>
     <ul>
         {% for state in states.values()|sort(attribute='name') %}
-        <LI>{{ state.id}}: <b>{{ state.name }}</b></LI>
+        <li>{{ state.id}}: <b>{{ state.name }}</b></li>
         {% endfor %}
     </ul>
     {% elif state %}

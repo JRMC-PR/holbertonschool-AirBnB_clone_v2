@@ -28,7 +28,6 @@ h1_tags = tree.xpath('//body/h1/text()')
 if h1_tags is None or len(h1_tags) == 0:
     print("H1 tag not found")
     sys.exit(1)
-
 if not re.search(r".*States.*", h1_tags[0]):
     print("Title `States` doesn't found")
     sys.exit(1)
